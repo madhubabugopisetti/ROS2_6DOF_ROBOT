@@ -34,3 +34,31 @@ ros2 pkg create robot_description --build-type ament_cmake
 - Add launch to CMakeLists.txt<br />
 - [BUILD](#build)<br />
 - ros2 launch robot_description world.launch.py<br />
+
+# GOAL 2: Render 3DModel in Gazebo
+## STEP 1:
+- Our Model will have
+```
+shoulder_link
+upper_arm_link
+forearm_link
+wrist_link
+gripper_base
+left_finger
+right_finger
+```
+- Create a new folder meshes and move your dae files into this
+- Create a new folder urdf with robot_arm.xacro
+- Add meshes, urdf in CMakeLists.txt
+- Add these in package.xml
+```
+<exec_depend>robot_state_publisher</exec_depend>
+<exec_depend>joint_state_publisher</exec_depend>
+<exec_depend>xacro</exec_depend>
+<exec_depend>ros_gz_sim</exec_depend>
+<exec_depend>ros_gz_bridge</exec_depend>
+<exec_depend>gazebo_ros</exec_depend>
+```
+- Create a new file with arm_gazebo.launch.py in launch folder
+- [BUILD](#build)
+- ros2 launch robot_description arm_gazebo.launch.py
