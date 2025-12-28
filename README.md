@@ -78,3 +78,24 @@ Open A terminal run rviz2,
 - In rviz.launch.py add this rviz node
 - [BUILD](#build)
 - ros2 launch robot_description rviz.launch.py
+
+# GOAL 4: Render 3DModel in both GAZEBO and RVIZ2 without GUI
+- Create a new file gazebo_rviz.launch.py
+- Add this code at last of robot_arm.gazebo before </robot>
+```
+<gazebo>
+    <plugin
+        filename="gz-sim-joint-state-publisher-system"
+        name="gz::sim::systems::JointStatePublisher">
+        <topic>joint_states</topic>
+        <joint_name>shoulder_pan_joint</joint_name>
+        <joint_name>shoulder_lift_joint</joint_name>
+        <joint_name>elbow_joint</joint_name>
+        <joint_name>wrist_joint</joint_name>
+        <joint_name>left_finger_joint</joint_name>
+        <joint_name>right_finger_joint</joint_name>
+    </plugin>
+</gazebo>
+```
+- [BUILD](#build)
+- ros2 launch robot_description gazebo_rviz.launch.py
