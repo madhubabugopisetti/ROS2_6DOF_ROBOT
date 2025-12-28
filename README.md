@@ -59,6 +59,22 @@ right_finger
 <exec_depend>ros_gz_bridge</exec_depend>
 <exec_depend>gazebo_ros</exec_depend>
 ```
-- Create a new file with arm_gazebo.launch.py in launch folder
+- Create a new file with gazebo.launch.py in launch folder
 - [BUILD](#build)
-- ros2 launch robot_description arm_gazebo.launch.py
+- ros2 launch robot_description gazebo.launch.py
+
+# GOAL 3: Render 3DModel in RVIZ2 with GUI
+- Create a file rviz.launch.py
+- [BUILD](#build)
+- ros2 launch robot_description rviz.launch.py
+```
+Open A terminal run rviz2, 
+- add Robot Model
+- Fixed Frame to world
+- Description Topic to /robot_description
+```
+- Click on File, Save Confif as rviz.rviz to our config folder
+- Add config in CMakeLists.txt
+- In rviz.launch.py add this rviz node
+- [BUILD](#build)
+- ros2 launch robot_description rviz.launch.py
